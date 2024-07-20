@@ -1,0 +1,80 @@
+Task TODO:
+(1) Got the error on'/channel': Error: Got AttributeError when attempting to get a value for field `service` on serializer `SuperAdminTransactionSerializer`.\nThe 
+serializer field might be named incorrectly and not match any attribute or key on the `Transaction` instance.\nOriginal exception text was: 'Transaction' object has 
+no attribute 'service'. (Fixed)
+
+(2). I am still working on the "s/related-agencies". (Done)
+(3) Who adds the available channels to a service created by the Super Admin ?
+
+- NOTE: Channel Assignment should be added to Super Admin Settings sections, where he/she can be assigned a channel
+where the service can be available on.
+- NOTE: I have added a service type (paid / free)to the service creation logic, the frontend person would need to add it to his own flow.
+- Add a name to the Service Detail, when an Admin is creating a Service.
+- Each service would use the Logo of the Agency attached to it's ServiceDetail Model.
+- How do we assign service type during service creation.
+
+
+TODO:
+- Revisit the flow for Service. (done)
+- Wrap your each service codes in functions. (done)
+- Write an endpoint used for updating the service_detail_code for a Service's detail. (done)
+- Create an endpoint for creating sub agency in the agency flow. (done)
+- Endpoint for partner manager to create agency. (done)
+- Email notification. (done)
+- logged all 3rd party response
+- change verification response:
+   - BVN (done)
+   - Voters Card (done)
+   - TIN (undone: I haven't gotten a real TIN number)
+   - CAC (undone: verifMe returns an error message, maybe due to incorrect CAC)
+   - Drivers License (done)
+- Reversal: In a case where the 3rd party's API is down and not responding, and a user just finished making payment,
+  this user's fund is supposed to be reversed.
+- change login response.
+
+TODO 2:
+====================
+- Ask Mr. Albert if verifyMe charges the wallet if the user enters a wrong detail.
+- What if a user enters an incorrect verification data, while the service providers "VerifyMe" still charge user ?:
+    - collect user details
+    - call 3rd party API
+    - if success:
+        - charge user
+        - give user 3rd party response.
+    - else:
+        - give error response about details
+        "But I need to sure that the 3rd doesn't charge tm30's account"
+=====================
+
+
+Questions:
+- Should I save and display the Document's ID.
+- Can user come back to view already verified documents of should they re-do the process ?
+
+NOTE: Service Code field on the service detail Model is used for Identifying the block of code that needs to be ran when
+    - a user selects the service of a Provider.
+    - For Voter's Card Registration Service Code will be (VCR01) ***01 which represents the agencies in ascending number
+
+
+Where to add notifications:
+- After a Super Admin adds an Agency to a service.
+- After a Super Admin creates a Partner Manager. Partner Manager receives an email for account activation and after password reset.
+- Forgot password.
+- After a Super Admin / partner manager (activate / deactivate) an Agency's service.
+- Approval or Disapproval of Services by the Super Admin / Partner Manager.
+- After a Partner Manger creates an Agency, Super Admin needs to be notified for Approval of the Agency on the Platform.
+- After a successful registration, the business will wait for approval by the super admin before the business account can be activated.
+
+
+
+Users:
+- Individual (Done)
+- Super Admin (Done)
+- Partner Manager
+- Business
+- Agency
+- Sub Agency
+
+
+# -----
+
